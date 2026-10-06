@@ -522,11 +522,12 @@ _docker_compose_up() {
 install_docker_stack() {
     log_info "=== Docker Compose Installation ==="
 
-    if [[ "$SS_DRY_RUN" != "true" ]]; then
-        _check_docker_prerequisites
-    else
-        log_info "[DRY RUN] Would check Docker prerequisites"
+    if [[ "$SS_DRY_RUN" == "true" ]]; then
+        log_info "[DRY RUN] Would check Docker prerequisites, generate the stack in ${DOCKER_OUTPUT_DIR}, save state and run docker compose up"
+        return 0
     fi
+
+    _check_docker_prerequisites
 
     # Create output directory
     mkdir -p "$DOCKER_OUTPUT_DIR"
