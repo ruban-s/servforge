@@ -128,6 +128,9 @@ init_config() {
         load_config_file "$SS_CONFIG_FILE"
     fi
 
-    # 3. Environment variables override everything
+    # 3. Environment variables override config files
     apply_env_overrides
+
+    # 4. CLI flags override everything
+    [[ -n "$SS_CLI_INSTALL_METHOD" ]] && CFG_INSTALL_METHOD="$SS_CLI_INSTALL_METHOD" || true
 }

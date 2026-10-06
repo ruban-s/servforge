@@ -2,6 +2,7 @@
 # cli.sh — CLI argument parsing
 
 SS_CONFIG_FILE=""
+SS_CLI_INSTALL_METHOD=""
 SS_NON_INTERACTIVE="${SS_NON_INTERACTIVE:-false}"
 SS_ACTION="install"  # install | uninstall | update | start | stop | restart
 
@@ -87,7 +88,7 @@ parse_args() {
                 shift
                 ;;
             --docker)
-                CFG_INSTALL_METHOD="docker"
+                SS_CLI_INSTALL_METHOD="docker"
                 shift
                 ;;
             --start)
